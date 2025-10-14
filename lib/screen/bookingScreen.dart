@@ -315,7 +315,7 @@ class _BookingScreenState extends State<BookingScreen> {
     if (query.isEmpty) return suggestions;
 
     final String url =
-        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&key=$_apiKey&components=country:cd';
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&key=$_apiKey&components=country:cd|country:rw';
 
     try {
       final response = await http.get(Uri.parse(url));
