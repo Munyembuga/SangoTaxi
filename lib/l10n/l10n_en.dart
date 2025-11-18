@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'l10n.dart';
 
 // ignore_for_file: type=lint
@@ -40,7 +42,8 @@ class SEn extends S {
   String get loginRequired => 'Login Required';
 
   @override
-  String get loginMessage => 'You need to create an account or log in to book a ride.';
+  String get loginMessage =>
+      'You need to create an account or log in to book a ride.';
 
   @override
   String get cancel => 'Cancel';
@@ -109,7 +112,7 @@ class SEn extends S {
 
   @override
   String estimatedFare(Object fare) {
-    return 'Estimated Fare: $fare USD';
+    return 'Estimated Fare: $fare FCFA';
   }
 
   @override
@@ -117,14 +120,15 @@ class SEn extends S {
 
   @override
   String confirmBookingWithFare(Object fare) {
-    return 'Confirm Booking - $fare USD';
+    return 'Confirm Booking - $fare FCFA';
   }
 
   @override
   String get completeYourBooking => 'Complete Your Booking';
 
   @override
-  String get provideContactInfo => 'Please provide your contact information to complete the booking:';
+  String get provideContactInfo =>
+      'Please provide your contact information to complete the booking:';
 
   @override
   String get yourName => 'Your Name';
@@ -139,18 +143,20 @@ class SEn extends S {
   String get phoneHint => '+243 y xxx xx xx ';
 
   @override
-  String get privacyInfo => 'Your information will only be used for this booking.';
+  String get privacyInfo =>
+      'Your information will only be used for this booking.';
 
   @override
   String get fillAllFields => 'Please fill in all fields';
 
   @override
   String bookingConfirmed(Object category, Object fare) {
-    return 'Booking confirmed! $category - $fare USD';
+    return 'Booking confirmed! $category - $fare FCFA';
   }
 
   @override
-  String get bookingRequestSent => 'Booking request sent! You will be contacted shortly.';
+  String get bookingRequestSent =>
+      'Booking request sent! You will be contacted shortly.';
 
   @override
   String bookingFailed(Object message) {
@@ -213,12 +219,12 @@ class SEn extends S {
 
   @override
   String ratePerDuration(Object price, Object unit) {
-    return 'Rate: $price USD per $unit';
+    return 'Rate: $price FCFA per $unit';
   }
 
   @override
   String totalPrice(Object price) {
-    return 'Total: $price USD';
+    return 'Total: $price FCFA';
   }
 
   @override
@@ -229,14 +235,15 @@ class SEn extends S {
 
   @override
   String confirmRentalWithPrice(Object price) {
-    return 'Confirm Rental: $price USD';
+    return 'Confirm Rental: $price FCFA';
   }
 
   @override
   String get completeYourRental => 'Complete Your Rental';
 
   @override
-  String get provideRentalContactInfo => 'Please provide your contact information to complete the rental:';
+  String get provideRentalContactInfo =>
+      'Please provide your contact information to complete the rental:';
 
   @override
   String get selectVehicle => 'Select Vehicle';
@@ -320,7 +327,8 @@ class SEn extends S {
   String get startTrip => 'Start Trip';
 
   @override
-  String get enterOtpMessage => 'Please ask the client for the OTP code to start the trip.';
+  String get enterOtpMessage =>
+      'Please ask the client for the OTP code to start the trip.';
 
   @override
   String get enterOTP => 'Enter OTP';
@@ -332,7 +340,8 @@ class SEn extends S {
   String get navigation => 'Navigation';
 
   @override
-  String get locationCoordsNotAvailable => 'Location coordinates not available for navigation';
+  String get locationCoordsNotAvailable =>
+      'Location coordinates not available for navigation';
 
   @override
   String get pause => 'Pause';
@@ -395,7 +404,8 @@ class SEn extends S {
   String get checkYourCarRentals => 'Check Your Car Rentals';
 
   @override
-  String get enterPhoneForRentals => 'Enter the phone number you used when making the rental booking';
+  String get enterPhoneForRentals =>
+      'Enter the phone number you used when making the rental booking';
 
   @override
   String get checkYourConfirmedRentals => 'Check Your Confirmed Rentals';
@@ -407,7 +417,8 @@ class SEn extends S {
   String get checkYourBookings => 'Check Your Bookings';
 
   @override
-  String get enterPhoneForBooking => 'Enter the phone number you used when making the booking';
+  String get enterPhoneForBooking =>
+      'Enter the phone number you used when making the booking';
 
   @override
   String get checkBookings => 'Check Bookings';
@@ -416,7 +427,8 @@ class SEn extends S {
   String get noPendingRides => 'No Pending Rides';
 
   @override
-  String get pendingRidesWillAppearHere => 'Your pending rides will appear here';
+  String get pendingRidesWillAppearHere =>
+      'Your pending rides will appear here';
 
   @override
   String get checkYourActiveTrips => 'Check Your Active Trips';
@@ -440,13 +452,15 @@ class SEn extends S {
   String get noCompletedRides => 'No Completed Rides';
 
   @override
-  String get completedRidesWillAppearHere => 'Your completed rides will appear here';
+  String get completedRidesWillAppearHere =>
+      'Your completed rides will appear here';
 
   @override
   String get noCancelledRides => 'No Cancelled Rides';
 
   @override
-  String get cancelledRidesWillAppearHere => 'Your cancelled rides will appear here';
+  String get cancelledRidesWillAppearHere =>
+      'Your cancelled rides will appear here';
 
   @override
   String get confirm => 'Confirm';
@@ -462,7 +476,8 @@ class SEn extends S {
   }
 
   @override
-  String get provideCancellationReason => 'Please provide a reason for cancellation:';
+  String get provideCancellationReason =>
+      'Please provide a reason for cancellation:';
 
   @override
   String get enterReason => 'Enter reason...';
@@ -477,7 +492,8 @@ class SEn extends S {
   String get noConfirmedRides => 'No Confirmed Rides';
 
   @override
-  String get confirmedRidesWillAppearHere => 'Your confirmed rides will appear here';
+  String get confirmedRidesWillAppearHere =>
+      'Your confirmed rides will appear here';
 
   @override
   String get unknownClient => 'Unknown Client';
@@ -555,7 +571,8 @@ class SEn extends S {
   String get newPassword => 'New Password';
 
   @override
-  String get enterEmailForReset => 'Enter your email address to receive a reset token';
+  String get enterEmailForReset =>
+      'Enter your email address to receive a reset token';
 
   @override
   String enterTokenSentTo(Object email) {
@@ -605,7 +622,8 @@ class SEn extends S {
   String get completeYourProfile => 'Complete Your Profile';
 
   @override
-  String get provideDetailsForAccount => 'Please provide your details to create your account';
+  String get provideDetailsForAccount =>
+      'Please provide your details to create your account';
 
   @override
   String get firstName => 'First Name';
@@ -668,7 +686,8 @@ class SEn extends S {
   String get shareLiveLocation => 'Share Live Location';
 
   @override
-  String get shareLocationEmergency => 'Share your location with emergency contacts';
+  String get shareLocationEmergency =>
+      'Share your location with emergency contacts';
 
   @override
   String get personalInformation => 'Personal Information';
@@ -701,7 +720,8 @@ class SEn extends S {
   String get french => 'Français';
 
   @override
-  String get areYouSureLogout => 'Are you sure you want to logout from your account?';
+  String get areYouSureLogout =>
+      'Are you sure you want to logout from your account?';
 
   @override
   String get active => 'Active';
@@ -722,10 +742,12 @@ class SEn extends S {
   String get driverAvailability => 'Driver Availability';
 
   @override
-  String get toggleAvailabilityDescription => 'Toggle your availability for accepting rides (Available/Offline)';
+  String get toggleAvailabilityDescription =>
+      'Toggle your availability for accepting rides (Available/Offline)';
 
   @override
-  String get allowPassengersToCall => 'Allow passengers to call you during rides';
+  String get allowPassengersToCall =>
+      'Allow passengers to call you during rides';
 
   @override
   String get shareLocationWithApp => 'Share your location with the app';
@@ -752,7 +774,8 @@ class SEn extends S {
   String get add => 'Add';
 
   @override
-  String get demoNotice => 'Note: This is a demo. New destinations will appear after actual rides.';
+  String get demoNotice =>
+      'Note: This is a demo. New destinations will appear after actual rides.';
 
   @override
   String get editDestination => 'Edit Destination';
@@ -791,16 +814,19 @@ class SEn extends S {
   String get noFavoriteDestinations => 'No Favorite Destinations';
 
   @override
-  String get favoritesWillAppearAsYouUse => 'Your frequently visited locations will appear here as you use the app';
+  String get favoritesWillAppearAsYouUse =>
+      'Your frequently visited locations will appear here as you use the app';
 
   @override
-  String get addPlacesYouVisit => 'Add places you visit frequently to save time on future bookings';
+  String get addPlacesYouVisit =>
+      'Add places you visit frequently to save time on future bookings';
 
   @override
   String get refresh => 'Refresh';
 
   @override
-  String get frequentlyUsedLocations => 'These are your most frequently used locations. Tap to use as destination.';
+  String get frequentlyUsedLocations =>
+      'These are your most frequently used locations. Tap to use as destination.';
 
   @override
   String get pickupLocations => 'Pickup Locations';
@@ -823,4 +849,137 @@ class SEn extends S {
 
   @override
   String get dropoff => 'Dropoff';
+
+  @override
+  String get pendingRentals => 'Pending Rentals';
+
+  @override
+  String get noRentalsFound => 'No rentals found';
+
+  @override
+  String get yourPendingRentalsWillAppear =>
+      'Your pending rentals will appear here';
+
+  @override
+  String get loadingRentals => 'Loading rentals...';
+
+  @override
+  String get errorLoadingRentals => 'Error loading rentals';
+
+  @override
+  String get rentalPeriod => 'Rental Period';
+
+  @override
+  String get priceEstimated => 'Price Estimated';
+
+  @override
+  String get makePayment => 'Make Payment';
+
+  @override
+  String get paymentOptions => 'Payment Options';
+
+  @override
+  String get selectPaymentMethod => 'Select Payment Method';
+
+  @override
+  String get paymentAmount => 'Payment Amount';
+
+  @override
+  String get customAmount => 'Custom Amount';
+
+  @override
+  String get enterAmount => 'Enter amount';
+
+  @override
+  String get processPayment => 'Process Payment';
+
+  @override
+  String get paymentProcessing => 'Processing Payment';
+
+  @override
+  String get pleaseWait => 'Please wait...';
+
+  @override
+  String get paymentSuccessful =>
+      'Payment successful! Your booking has been updated.';
+
+  @override
+  String paymentFailed(String message) {
+    return 'Payment failed: $message';
+  }
+
+  @override
+  String paymentError(String error) {
+    return 'Error processing payment: $error';
+  }
+
+  @override
+  String get pleaseSelectPaymentMethod =>
+      'Please select a payment method and enter amount';
+
+  @override
+  String get fcfaCurrency => 'FCFA';
+
+  @override
+  String get choosePaymentMethod => 'Choose Payment Method';
+
+  @override
+  String totalAmount(String amount) {
+    return 'Total amount: $amount FCFA';
+  }
+
+  @override
+  String enterInitialAmount(String minAmount, String maxAmount) {
+    return 'Enter initial amount to pay: $minAmount FCFA - $maxAmount FCFA';
+  }
+
+  @override
+  String get amountInFcfa => 'Amount in FCFA';
+
+  @override
+  String rentalInfo(String categoryName, String duration, String unit) {
+    return 'Rental: $categoryName - $duration $unit';
+  }
+
+  @override
+  String get loadingPaymentMethods => 'Loading payment methods...';
+
+  @override
+  String get noPaymentMethods => 'No payment methods available';
+
+  @override
+  String get selectedPayment => 'Selected Payment';
+
+  @override
+  String payWithMethod(String method) {
+    return 'Pay with $method';
+  }
+
+  @override
+  String get confirmPaymentMethod => 'Confirm Payment Method';
+
+  @override
+  String get pleaseEnterValidAmount => 'Please enter a valid payment amount';
+
+  @override
+  String get carRental => 'Car Rental';
+
+  @override
+  String get standardRental => 'Standard Rental';
+
+  @override
+  String get tryAgain => 'Try Again';
+
+  @override
+  String get noConfirmedRentalsFound => 'No confirmed rentals found';
+
+  @override
+  String get confirmedRentalsWillAppearHere =>
+      'Your confirmed car rentals will appear here';
+
+  @override
+  String get totalInitialPayment => 'Total Initial Payment';
+
+  @override
+  String get rentals => 'rentals';
 }

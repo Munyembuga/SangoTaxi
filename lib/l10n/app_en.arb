@@ -38,14 +38,14 @@
   "duration": "Duration",
   "startDate": "Start",
   "endDate": "End",
-  "estimatedFare": "Estimated Fare: {fare} USD",
+  "estimatedFare": "Estimated Fare: {fare} FCFA",
   "@estimatedFare": {
     "placeholders": {
       "fare": {}
     }
   },
   "confirmBooking": "Confirm Booking",
-  "confirmBookingWithFare": "Confirm Booking - {fare} USD",
+  "confirmBookingWithFare": "Confirm Booking - {fare} FCFA",
   "@confirmBookingWithFare": {
     "placeholders": {
       "fare": {}
@@ -59,7 +59,7 @@
   "phoneHint": "+243 y xxx xx xx ",
   "privacyInfo": "Your information will only be used for this booking.",
   "fillAllFields": "Please fill in all fields",
-  "bookingConfirmed": "Booking confirmed! {category} - {fare} USD",
+  "bookingConfirmed": "Booking confirmed! {category} - {fare} FCFA",
   "@bookingConfirmed": {
     "placeholders": {
       "category": {},
@@ -105,14 +105,14 @@
       "unit": {}
     }
   },
-  "ratePerDuration": "Rate: {price} USD per {unit}",
+  "ratePerDuration": "Rate: {price} FCFA per {unit}",
   "@ratePerDuration": {
     "placeholders": {
       "price": {},
       "unit": {}
     }
   },
-  "totalPrice": "Total: {price} USD",
+  "totalPrice": "Total: {price} FCFA",
   "@totalPrice": {
     "placeholders": {
       "price": {}
@@ -120,7 +120,7 @@
   },
   "priceIncludesDriver": "Price includes driver",
   "confirmRental": "Confirm Rental",
-  "confirmRentalWithPrice": "Confirm Rental: {price} USD",
+  "confirmRentalWithPrice": "Confirm Rental: {price} FCFA",
   "@confirmRentalWithPrice": {
     "placeholders": {
       "price": {}
@@ -345,5 +345,96 @@
   "usedTimes": "Used {count} time{s}",
   "usingDestination": "Using \"{name}\" as destination...",
   "pickup": "Pickup",
-  "dropoff": "Dropoff"
+  "dropoff": "Dropoff",
+  "pendingRentals": "Pending Rentals",
+  "noRentalsFound": "No rentals found",
+  "yourPendingRentalsWillAppear": "Your pending rentals will appear here",
+  "loadingRentals": "Loading rentals...",
+  "errorLoadingRentals": "Error loading rentals",
+  "rentalPeriod": "Rental Period",
+  "priceEstimated": "Price Estimated",
+  "makePayment": "Make Payment",
+  "paymentOptions": "Payment Options",
+  "selectPaymentMethod": "Select Payment Method",
+  "paymentAmount": "Payment Amount",
+  "customAmount": "Custom Amount",
+  "enterAmount": "Enter amount",
+  "processPayment": "Process Payment",
+  "paymentProcessing": "Processing Payment",
+  "pleaseWait": "Please wait...",
+  "paymentSuccessful": "Payment successful! Your booking has been updated.",
+  "paymentFailed": "Payment failed: {message}",
+  "@paymentFailed": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentError": "Error processing payment: {error}",
+  "@paymentError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "pleaseSelectPaymentMethod": "Please select a payment method and enter amount",
+  "fcfaCurrency": "FCFA",
+  "choosePaymentMethod": "Choose Payment Method",
+  "totalAmount": "Total amount: {amount} FCFA",
+  "@totalAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "enterInitialAmount": "Enter initial amount to pay: {minAmount} FCFA - {maxAmount} FCFA",
+  "@enterInitialAmount": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "maxAmount": {
+        "type": "String"
+      }
+    }
+  },
+  "amountInFcfa": "Amount in FCFA",
+  "rentalInfo": "Rental: {categoryName} - {duration} {unit}",
+  "@rentalInfo": {
+    "placeholders": {
+      "categoryName": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "loadingPaymentMethods": "Loading payment methods...",
+  "noPaymentMethods": "No payment methods available",
+  "selectPaymentMethod": "Select Payment Method",
+  "selectedPayment": "Selected Payment",
+  "payWithMethod": "Pay with {method}",
+  "@payWithMethod": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmPaymentMethod": "Confirm Payment Method",
+  "pleaseEnterValidAmount": "Please enter a valid payment amount",
+  "carRental": "Car Rental",
+  "standardRental": "Standard Rental",
+  "tryAgain": "Try Again",
+  "noConfirmedRentalsFound": "No confirmed rentals found",
+  "confirmedRentalsWillAppearHere": "Your confirmed car rentals will appear here",
+  "totalInitialPayment": "Total Initial Payment",
+  "rentals": "rentals"
 }

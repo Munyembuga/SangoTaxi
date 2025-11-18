@@ -246,22 +246,25 @@ class _BookingScreenState extends State<BookingScreen> {
                   print('=== RIDE FARE CALCULATION ===');
                   print('Distance: $distanceInKm km');
                   print('Base KM: $baseKm km');
-                  print('Base fare: $baseFare USD');
-                  print('Per KM rate: $perKmRate USD');
+                  print('Base fare: $baseFare FCFA');
+                  print('Per KM rate: $perKmRate FCFA');
 
                   if (distanceInKm <= baseKm) {
                     // Distance is within base km limit, charge only base fare
                     _estimatedFare = baseFare;
                     print('Distance <= Base KM: Using base fare only');
-                    print('Final fare: $baseFare USD');
+                    print('Final fare: $baseFare FCFA');
                   } else {
                     // Distance exceeds base km, calculate additional km charges
-
-                    _estimatedFare = distanceInKm * perKmRate;
-                    print("estimate Price: $_estimatedFare");
-                    print('Distance > Base KM: Using base fare + per km rate');
+                    double extraDistance = distanceInKm - baseKm;
+                    _estimatedFare = baseFare + (extraDistance * perKmRate);
                     print(
-                        'Final fare: ${_estimatedFare.toStringAsFixed(0)} USD');
+                        'Distance > Base KM: Using base fare + additional distance charges');
+                    print('Extra distance: $extraDistance km');
+                    print(
+                        'Additional charges: ${extraDistance * perKmRate} FCFA');
+                    print(
+                        'Final fare: ${_estimatedFare.toStringAsFixed(0)} FCFA');
                   }
                   print('=============================');
                 }
@@ -277,7 +280,7 @@ class _BookingScreenState extends State<BookingScreen> {
             print('Distance: $_distance ( km)');
             print('Pricing Type: ${_selectedCategory!.pricing['type']}');
             print('Category: ${_selectedCategory!.catgName}');
-            print('Estimated Fare: ${_estimatedFare.toStringAsFixed(0)} USD');
+            print('Estimated Fare: ${_estimatedFare.toStringAsFixed(0)} FCFA');
             print('================================');
           } else {
             setState(() {
@@ -315,7 +318,7 @@ class _BookingScreenState extends State<BookingScreen> {
     if (query.isEmpty) return suggestions;
 
     final String url =
-        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&key=$_apiKey&components=country:cd|country:rw';
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&key=$_apiKey&components=country:cf';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -1535,7 +1538,7 @@ class _BookingScreenState extends State<BookingScreen> {
     if (query.isEmpty) return [];
 
     final String url =
-        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&key=$_apiKey&components=country:rw|country:cd|country:cf';
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$query&key=$_apiKey&components=country:cf';
 
     try {
       final response = await http.get(Uri.parse(url));

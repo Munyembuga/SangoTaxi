@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'l10n.dart';
 
 // ignore_for_file: type=lint
@@ -13,7 +15,8 @@ class SFr extends S {
   String get fastReliable => 'Trajets rapides et fiables';
 
   @override
-  String get getToDestination => 'Arrivez à destination à l\'heure, à chaque fois';
+  String get getToDestination =>
+      'Arrivez à destination à l\'heure, à chaque fois';
 
   @override
   String get safeSecure => 'Sûr et sécurisé';
@@ -25,7 +28,8 @@ class SFr extends S {
   String get affordablePrices => 'Prix abordables';
 
   @override
-  String get premiumService => 'Profitez d\'un service premium à des tarifs compétitifs';
+  String get premiumService =>
+      'Profitez d\'un service premium à des tarifs compétitifs';
 
   @override
   String get bookingTypes => 'Types de réservation';
@@ -40,7 +44,8 @@ class SFr extends S {
   String get loginRequired => 'Connexion requise';
 
   @override
-  String get loginMessage => 'Vous devez créer un compte ou vous connecter pour réserver un trajet.';
+  String get loginMessage =>
+      'Vous devez créer un compte ou vous connecter pour réserver un trajet.';
 
   @override
   String get cancel => 'Annuler';
@@ -82,7 +87,8 @@ class SFr extends S {
   String get gettingCurrentLocation => 'Obtention de la position actuelle...';
 
   @override
-  String get errorGettingLocation => 'Erreur lors de l\'obtention de la position';
+  String get errorGettingLocation =>
+      'Erreur lors de l\'obtention de la position';
 
   @override
   String get destination => 'Destination';
@@ -91,7 +97,8 @@ class SFr extends S {
   String get whereAreYouGoing => 'Où allez-vous?';
 
   @override
-  String get calculatingDistanceAndFare => 'Calcul de la distance et du tarif...';
+  String get calculatingDistanceAndFare =>
+      'Calcul de la distance et du tarif...';
 
   @override
   String distance(Object distance) {
@@ -109,7 +116,7 @@ class SFr extends S {
 
   @override
   String estimatedFare(Object fare) {
-    return 'Tarif estimé: $fare USD';
+    return 'Tarif estimé: $fare FCFA';
   }
 
   @override
@@ -117,14 +124,15 @@ class SFr extends S {
 
   @override
   String confirmBookingWithFare(Object fare) {
-    return 'Confirmer la réservation - $fare USD';
+    return 'Confirmer la réservation - $fare FCFA';
   }
 
   @override
   String get completeYourBooking => 'Compléter votre réservation';
 
   @override
-  String get provideContactInfo => 'Veuillez fournir vos coordonnées pour finaliser la réservation:';
+  String get provideContactInfo =>
+      'Veuillez fournir vos coordonnées pour finaliser la réservation:';
 
   @override
   String get yourName => 'Votre nom';
@@ -139,18 +147,20 @@ class SFr extends S {
   String get phoneHint => '0788123456';
 
   @override
-  String get privacyInfo => 'Vos informations seront utilisées uniquement pour cette réservation.';
+  String get privacyInfo =>
+      'Vos informations seront utilisées uniquement pour cette réservation.';
 
   @override
   String get fillAllFields => 'Veuillez remplir tous les champs';
 
   @override
   String bookingConfirmed(Object category, Object fare) {
-    return 'Réservation confirmée! $category - $fare USD';
+    return 'Réservation confirmée! $category - $fare FCFA';
   }
 
   @override
-  String get bookingRequestSent => 'Demande de réservation envoyée! Vous serez contacté bientôt.';
+  String get bookingRequestSent =>
+      'Demande de réservation envoyée! Vous serez contacté bientôt.';
 
   @override
   String bookingFailed(Object message) {
@@ -213,12 +223,12 @@ class SFr extends S {
 
   @override
   String ratePerDuration(Object price, Object unit) {
-    return 'Taux: $price USD par $unit';
+    return 'Taux: $price FCFA par $unit';
   }
 
   @override
   String totalPrice(Object price) {
-    return 'Total: $price USD';
+    return 'Total: $price FCFA';
   }
 
   @override
@@ -229,14 +239,15 @@ class SFr extends S {
 
   @override
   String confirmRentalWithPrice(Object price) {
-    return 'Confirmer la location - $price RWUSDF';
+    return 'Confirmer la location - $price FCFA';
   }
 
   @override
   String get completeYourRental => 'Compléter votre location';
 
   @override
-  String get provideRentalContactInfo => 'Veuillez fournir vos coordonnées pour finaliser la location:';
+  String get provideRentalContactInfo =>
+      'Veuillez fournir vos coordonnées pour finaliser la location:';
 
   @override
   String get selectVehicle => 'Sélectionner un véhicule';
@@ -320,7 +331,8 @@ class SFr extends S {
   String get startTrip => 'Démarrer le voyage';
 
   @override
-  String get enterOtpMessage => 'Veuillez demander le code OTP au client pour démarrer le voyage.';
+  String get enterOtpMessage =>
+      'Veuillez demander le code OTP au client pour démarrer le voyage.';
 
   @override
   String get enterOTP => 'Entrez OTP';
@@ -332,7 +344,8 @@ class SFr extends S {
   String get navigation => 'Navigation';
 
   @override
-  String get locationCoordsNotAvailable => 'Les coordonnées de localisation ne sont pas disponibles pour la navigation';
+  String get locationCoordsNotAvailable =>
+      'Les coordonnées de localisation ne sont pas disponibles pour la navigation';
 
   @override
   String get pause => 'Pause';
@@ -395,7 +408,8 @@ class SFr extends S {
   String get checkYourCarRentals => 'Vérifiez vos locations de voitures';
 
   @override
-  String get enterPhoneForRentals => 'Entrez le numéro de téléphone que vous avez utilisé lors de la location';
+  String get enterPhoneForRentals =>
+      'Entrez le numéro de téléphone que vous avez utilisé lors de la location';
 
   @override
   String get checkYourConfirmedRentals => 'Vérifiez vos locations confirmées';
@@ -407,7 +421,8 @@ class SFr extends S {
   String get checkYourBookings => 'Vérifiez vos réservations';
 
   @override
-  String get enterPhoneForBooking => 'Entrez le numéro de téléphone que vous avez utilisé lors de la réservation';
+  String get enterPhoneForBooking =>
+      'Entrez le numéro de téléphone que vous avez utilisé lors de la réservation';
 
   @override
   String get checkBookings => 'Vérifier les réservations';
@@ -416,7 +431,8 @@ class SFr extends S {
   String get noPendingRides => 'Aucun trajet en attente';
 
   @override
-  String get pendingRidesWillAppearHere => 'Vos trajets en attente apparaîtront ici';
+  String get pendingRidesWillAppearHere =>
+      'Vos trajets en attente apparaîtront ici';
 
   @override
   String get checkYourActiveTrips => 'Vérifiez vos trajets actifs';
@@ -428,7 +444,8 @@ class SFr extends S {
   String get noActiveTrips => 'Aucun trajet actif';
 
   @override
-  String get activeTripsWillAppearHere => 'Vos trajets en cours apparaîtront ici';
+  String get activeTripsWillAppearHere =>
+      'Vos trajets en cours apparaîtront ici';
 
   @override
   String get checkYourCompletedTrips => 'Vérifiez vos trajets terminés';
@@ -440,13 +457,15 @@ class SFr extends S {
   String get noCompletedRides => 'Aucun trajet terminé';
 
   @override
-  String get completedRidesWillAppearHere => 'Vos trajets terminés apparaîtront ici';
+  String get completedRidesWillAppearHere =>
+      'Vos trajets terminés apparaîtront ici';
 
   @override
   String get noCancelledRides => 'Aucun trajet annulé';
 
   @override
-  String get cancelledRidesWillAppearHere => 'Vos trajets annulés apparaîtront ici';
+  String get cancelledRidesWillAppearHere =>
+      'Vos trajets annulés apparaîtront ici';
 
   @override
   String get confirm => 'Confirmer';
@@ -462,7 +481,8 @@ class SFr extends S {
   }
 
   @override
-  String get provideCancellationReason => 'Veuillez indiquer un motif d\'annulation:';
+  String get provideCancellationReason =>
+      'Veuillez indiquer un motif d\'annulation:';
 
   @override
   String get enterReason => 'Entrer la raison...';
@@ -477,7 +497,8 @@ class SFr extends S {
   String get noConfirmedRides => 'Aucun trajet confirmé';
 
   @override
-  String get confirmedRidesWillAppearHere => 'Vos trajets confirmés apparaîtront ici';
+  String get confirmedRidesWillAppearHere =>
+      'Vos trajets confirmés apparaîtront ici';
 
   @override
   String get unknownClient => 'Client inconnu';
@@ -528,7 +549,8 @@ class SFr extends S {
   String get resetTokenSent => 'Jeton de réinitialisation envoyé à votre email';
 
   @override
-  String get failedToSendToken => 'Échec de l\'envoi du jeton de réinitialisation';
+  String get failedToSendToken =>
+      'Échec de l\'envoi du jeton de réinitialisation';
 
   @override
   String get error => 'Erreur';
@@ -543,7 +565,8 @@ class SFr extends S {
   String get passwordResetSuccess => 'Mot de passe réinitialisé avec succès';
 
   @override
-  String get passwordResetFailed => 'Échec de la réinitialisation du mot de passe';
+  String get passwordResetFailed =>
+      'Échec de la réinitialisation du mot de passe';
 
   @override
   String get resetPassword => 'Réinitialiser le mot de passe';
@@ -555,7 +578,8 @@ class SFr extends S {
   String get newPassword => 'Nouveau mot de passe';
 
   @override
-  String get enterEmailForReset => 'Entrez votre adresse e-mail pour recevoir un jeton de réinitialisation';
+  String get enterEmailForReset =>
+      'Entrez votre adresse e-mail pour recevoir un jeton de réinitialisation';
 
   @override
   String enterTokenSentTo(Object email) {
@@ -572,7 +596,8 @@ class SFr extends S {
   String get enterResetToken => 'Entrez le jeton de réinitialisation';
 
   @override
-  String get tokenMinLength => 'Le jeton de réinitialisation doit comporter au moins 4 chiffres';
+  String get tokenMinLength =>
+      'Le jeton de réinitialisation doit comporter au moins 4 chiffres';
 
   @override
   String get resendResetToken => 'Renvoyer le jeton de réinitialisation';
@@ -584,7 +609,8 @@ class SFr extends S {
   String get enterNewPassword => 'Veuillez entrer un nouveau mot de passe';
 
   @override
-  String get passwordMinLength => 'Le mot de passe doit comporter au moins 6 caractères';
+  String get passwordMinLength =>
+      'Le mot de passe doit comporter au moins 6 caractères';
 
   @override
   String get confirmNewPassword => 'Confirmer le nouveau mot de passe';
@@ -605,7 +631,8 @@ class SFr extends S {
   String get completeYourProfile => 'Complétez votre profil';
 
   @override
-  String get provideDetailsForAccount => 'Veuillez fournir vos données pour créer votre compte';
+  String get provideDetailsForAccount =>
+      'Veuillez fournir vos données pour créer votre compte';
 
   @override
   String get firstName => 'Prénom';
@@ -623,7 +650,8 @@ class SFr extends S {
   String get enterPhoneNumber => 'Veuillez entrer votre numéro de téléphone';
 
   @override
-  String get enterValidPhoneNumber => 'Veuillez entrer un numéro de téléphone valide';
+  String get enterValidPhoneNumber =>
+      'Veuillez entrer un numéro de téléphone valide';
 
   @override
   String get alreadyHaveAccount => 'Vous avez déjà un compte?';
@@ -662,13 +690,15 @@ class SFr extends S {
   String get enableDriverCalls => 'Activer les appels du chauffeur';
 
   @override
-  String get allowDriversToCall => 'Permettre aux chauffeurs de vous appeler pendant les trajets';
+  String get allowDriversToCall =>
+      'Permettre aux chauffeurs de vous appeler pendant les trajets';
 
   @override
   String get shareLiveLocation => 'Partager la position en temps réel';
 
   @override
-  String get shareLocationEmergency => 'Partager votre position avec les contacts d\'urgence';
+  String get shareLocationEmergency =>
+      'Partager votre position avec les contacts d\'urgence';
 
   @override
   String get personalInformation => 'Informations personnelles';
@@ -701,7 +731,8 @@ class SFr extends S {
   String get french => 'Français';
 
   @override
-  String get areYouSureLogout => 'Êtes-vous sûr de vouloir vous déconnecter de votre compte?';
+  String get areYouSureLogout =>
+      'Êtes-vous sûr de vouloir vous déconnecter de votre compte?';
 
   @override
   String get active => 'Actif';
@@ -722,13 +753,16 @@ class SFr extends S {
   String get driverAvailability => 'Disponibilité du chauffeur';
 
   @override
-  String get toggleAvailabilityDescription => 'Basculer votre disponibilité pour accepter les trajets (Disponible/Hors ligne)';
+  String get toggleAvailabilityDescription =>
+      'Basculer votre disponibilité pour accepter les trajets (Disponible/Hors ligne)';
 
   @override
-  String get allowPassengersToCall => 'Permettre aux passagers de vous appeler pendant les trajets';
+  String get allowPassengersToCall =>
+      'Permettre aux passagers de vous appeler pendant les trajets';
 
   @override
-  String get shareLocationWithApp => 'Partager votre position avec l\'application';
+  String get shareLocationWithApp =>
+      'Partager votre position avec l\'application';
 
   @override
   String get companyDetails => 'Détails de l\'entreprise';
@@ -752,7 +786,8 @@ class SFr extends S {
   String get add => 'Ajouter';
 
   @override
-  String get demoNotice => 'Remarque: Ceci est une démo. Les nouvelles destinations apparaîtront après les trajets réels.';
+  String get demoNotice =>
+      'Remarque: Ceci est une démo. Les nouvelles destinations apparaîtront après les trajets réels.';
 
   @override
   String get editDestination => 'Modifier la destination';
@@ -785,22 +820,26 @@ class SFr extends S {
   String get failedToLoadDestinations => 'Échec du chargement des destinations';
 
   @override
-  String get noFavoriteDestinationsYet => 'Pas encore de destinations favorites';
+  String get noFavoriteDestinationsYet =>
+      'Pas encore de destinations favorites';
 
   @override
   String get noFavoriteDestinations => 'Aucune destination favorite';
 
   @override
-  String get favoritesWillAppearAsYouUse => 'Vos lieux fréquemment visités apparaîtront ici au fur et à mesure de votre utilisation de l\'application';
+  String get favoritesWillAppearAsYouUse =>
+      'Vos lieux fréquemment visités apparaîtront ici au fur et à mesure de votre utilisation de l\'application';
 
   @override
-  String get addPlacesYouVisit => 'Ajoutez des lieux que vous visitez fréquemment pour gagner du temps lors des prochaines réservations';
+  String get addPlacesYouVisit =>
+      'Ajoutez des lieux que vous visitez fréquemment pour gagner du temps lors des prochaines réservations';
 
   @override
   String get refresh => 'Actualiser';
 
   @override
-  String get frequentlyUsedLocations => 'Voici vos lieux les plus fréquemment utilisés. Appuyez pour utiliser comme destination.';
+  String get frequentlyUsedLocations =>
+      'Voici vos lieux les plus fréquemment utilisés. Appuyez pour utiliser comme destination.';
 
   @override
   String get pickupLocations => 'Lieux de prise en charge';
@@ -823,4 +862,138 @@ class SFr extends S {
 
   @override
   String get dropoff => 'Dépôt';
+
+  @override
+  String get pendingRentals => 'Locations en attente';
+
+  @override
+  String get noRentalsFound => 'Aucune location trouvée';
+
+  @override
+  String get yourPendingRentalsWillAppear =>
+      'Vos locations en attente apparaîtront ici';
+
+  @override
+  String get loadingRentals => 'Chargement des locations...';
+
+  @override
+  String get errorLoadingRentals => 'Erreur lors du chargement des locations';
+
+  @override
+  String get rentalPeriod => 'Période de location';
+
+  @override
+  String get priceEstimated => 'Prix estimé';
+
+  @override
+  String get makePayment => 'Effectuer le paiement';
+
+  @override
+  String get paymentOptions => 'Options de paiement';
+
+  @override
+  String get selectPaymentMethod => 'Sélectionner le mode de paiement';
+
+  @override
+  String get paymentAmount => 'Montant du paiement';
+
+  @override
+  String get customAmount => 'Montant personnalisé';
+
+  @override
+  String get enterAmount => 'Entrer le montant';
+
+  @override
+  String get processPayment => 'Traiter le paiement';
+
+  @override
+  String get paymentProcessing => 'Traitement du paiement';
+
+  @override
+  String get pleaseWait => 'Veuillez patienter...';
+
+  @override
+  String get paymentSuccessful =>
+      'Paiement réussi! Votre réservation a été mise à jour.';
+
+  @override
+  String paymentFailed(String message) {
+    return 'Échec du paiement: $message';
+  }
+
+  @override
+  String paymentError(String error) {
+    return 'Erreur lors du traitement du paiement: $error';
+  }
+
+  @override
+  String get pleaseSelectPaymentMethod =>
+      'Veuillez sélectionner un mode de paiement et saisir le montant';
+
+  @override
+  String get fcfaCurrency => 'FCFA';
+
+  @override
+  String get choosePaymentMethod => 'Choisir le mode de paiement';
+
+  @override
+  String totalAmount(String amount) {
+    return 'Montant total: $amount FCFA';
+  }
+
+  @override
+  String enterInitialAmount(String minAmount, String maxAmount) {
+    return 'Entrez le montant initial à payer: $minAmount FCFA - $maxAmount FCFA';
+  }
+
+  @override
+  String get amountInFcfa => 'Montant en FCFA';
+
+  @override
+  String rentalInfo(String categoryName, String duration, String unit) {
+    return 'Location: $categoryName - $duration $unit';
+  }
+
+  @override
+  String get loadingPaymentMethods => 'Chargement des modes de paiement...';
+
+  @override
+  String get noPaymentMethods => 'Aucun mode de paiement disponible';
+
+  @override
+  String get selectedPayment => 'Paiement sélectionné';
+
+  @override
+  String payWithMethod(String method) {
+    return 'Payer avec $method';
+  }
+
+  @override
+  String get confirmPaymentMethod => 'Confirmer le mode de paiement';
+
+  @override
+  String get pleaseEnterValidAmount =>
+      'Veuillez entrer un montant de paiement valide';
+
+  @override
+  String get carRental => 'Location de voiture';
+
+  @override
+  String get standardRental => 'Location standard';
+
+  @override
+  String get tryAgain => 'Réessayer';
+
+  @override
+  String get noConfirmedRentalsFound => 'Aucune location confirmée trouvée';
+
+  @override
+  String get confirmedRentalsWillAppearHere =>
+      'Vos locations de voiture confirmées apparaîtront ici';
+
+  @override
+  String get totalInitialPayment => 'Paiement initial total';
+
+  @override
+  String get rentals => 'locations';
 }

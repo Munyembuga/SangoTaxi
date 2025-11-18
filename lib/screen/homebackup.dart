@@ -522,7 +522,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icon(icon, color: color, size: 28),
                 const Spacer(),
                 Text(
-                  "${category.pricing?.getFormattedBaseFare() ?? 'Price varies'} USD",
+                  "${category.pricing?.getFormattedBaseFare() ?? 'Price varies'} FCFA",
                   style: TextStyle(
                     color: color,
                     fontSize: 12,

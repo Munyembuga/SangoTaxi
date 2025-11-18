@@ -62,7 +62,8 @@ import 'l10n_fr.dart';
 /// be consistent with the languages listed in the S.supportedLocales
 /// property.
 abstract class S {
-  S(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  S(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -82,7 +83,8 @@ abstract class S {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -296,7 +298,7 @@ abstract class S {
   /// No description provided for @estimatedFare.
   ///
   /// In en, this message translates to:
-  /// **'Estimated Fare: {fare} USD'**
+  /// **'Estimated Fare: {fare} FCFA'**
   String estimatedFare(Object fare);
 
   /// No description provided for @confirmBooking.
@@ -308,7 +310,7 @@ abstract class S {
   /// No description provided for @confirmBookingWithFare.
   ///
   /// In en, this message translates to:
-  /// **'Confirm Booking - {fare} USD'**
+  /// **'Confirm Booking - {fare} FCFA'**
   String confirmBookingWithFare(Object fare);
 
   /// No description provided for @completeYourBooking.
@@ -362,7 +364,7 @@ abstract class S {
   /// No description provided for @bookingConfirmed.
   ///
   /// In en, this message translates to:
-  /// **'Booking confirmed! {category} - {fare} USD'**
+  /// **'Booking confirmed! {category} - {fare} FCFA'**
   String bookingConfirmed(Object category, Object fare);
 
   /// No description provided for @bookingRequestSent.
@@ -476,13 +478,13 @@ abstract class S {
   /// No description provided for @ratePerDuration.
   ///
   /// In en, this message translates to:
-  /// **'Rate: {price} USD per {unit}'**
+  /// **'Rate: {price} FCFA per {unit}'**
   String ratePerDuration(Object price, Object unit);
 
   /// No description provided for @totalPrice.
   ///
   /// In en, this message translates to:
-  /// **'Total: {price} USD'**
+  /// **'Total: {price} FCFA'**
   String totalPrice(Object price);
 
   /// No description provided for @priceIncludesDriver.
@@ -500,7 +502,7 @@ abstract class S {
   /// No description provided for @confirmRentalWithPrice.
   ///
   /// In en, this message translates to:
-  /// **'Confirm Rental: {price} USD'**
+  /// **'Confirm Rental: {price} FCFA'**
   String confirmRentalWithPrice(Object price);
 
   /// No description provided for @completeYourRental.
@@ -1642,6 +1644,240 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Dropoff'**
   String get dropoff;
+
+  /// No description provided for @pendingRentals.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Rentals'**
+  String get pendingRentals;
+
+  /// No description provided for @noRentalsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No rentals found'**
+  String get noRentalsFound;
+
+  /// No description provided for @yourPendingRentalsWillAppear.
+  ///
+  /// In en, this message translates to:
+  /// **'Your pending rentals will appear here'**
+  String get yourPendingRentalsWillAppear;
+
+  /// No description provided for @loadingRentals.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading rentals...'**
+  String get loadingRentals;
+
+  /// No description provided for @errorLoadingRentals.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading rentals'**
+  String get errorLoadingRentals;
+
+  /// No description provided for @rentalPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Rental Period'**
+  String get rentalPeriod;
+
+  /// No description provided for @priceEstimated.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Estimated'**
+  String get priceEstimated;
+
+  /// No description provided for @makePayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Make Payment'**
+  String get makePayment;
+
+  /// No description provided for @paymentOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Options'**
+  String get paymentOptions;
+
+  /// No description provided for @selectPaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Payment Method'**
+  String get selectPaymentMethod;
+
+  /// No description provided for @paymentAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Amount'**
+  String get paymentAmount;
+
+  /// No description provided for @customAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Amount'**
+  String get customAmount;
+
+  /// No description provided for @enterAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter amount'**
+  String get enterAmount;
+
+  /// No description provided for @processPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Process Payment'**
+  String get processPayment;
+
+  /// No description provided for @paymentProcessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing Payment'**
+  String get paymentProcessing;
+
+  /// No description provided for @pleaseWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Please wait...'**
+  String get pleaseWait;
+
+  /// No description provided for @paymentSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment successful! Your booking has been updated.'**
+  String get paymentSuccessful;
+
+  /// No description provided for @paymentFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment failed: {message}'**
+  String paymentFailed(String message);
+
+  /// No description provided for @paymentError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error processing payment: {error}'**
+  String paymentError(String error);
+
+  /// No description provided for @pleaseSelectPaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a payment method and enter amount'**
+  String get pleaseSelectPaymentMethod;
+
+  /// No description provided for @fcfaCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'FCFA'**
+  String get fcfaCurrency;
+
+  /// No description provided for @choosePaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Payment Method'**
+  String get choosePaymentMethod;
+
+  /// No description provided for @totalAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total amount: {amount} FCFA'**
+  String totalAmount(String amount);
+
+  /// No description provided for @enterInitialAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter initial amount to pay: {minAmount} FCFA - {maxAmount} FCFA'**
+  String enterInitialAmount(String minAmount, String maxAmount);
+
+  /// No description provided for @amountInFcfa.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount in FCFA'**
+  String get amountInFcfa;
+
+  /// No description provided for @rentalInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Rental: {categoryName} - {duration} {unit}'**
+  String rentalInfo(String categoryName, String duration, String unit);
+
+  /// No description provided for @loadingPaymentMethods.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading payment methods...'**
+  String get loadingPaymentMethods;
+
+  /// No description provided for @noPaymentMethods.
+  ///
+  /// In en, this message translates to:
+  /// **'No payment methods available'**
+  String get noPaymentMethods;
+
+  /// No description provided for @selectedPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Payment'**
+  String get selectedPayment;
+
+  /// No description provided for @payWithMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with {method}'**
+  String payWithMethod(String method);
+
+  /// No description provided for @confirmPaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Payment Method'**
+  String get confirmPaymentMethod;
+
+  /// No description provided for @pleaseEnterValidAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid payment amount'**
+  String get pleaseEnterValidAmount;
+
+  /// No description provided for @carRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Car Rental'**
+  String get carRental;
+
+  /// No description provided for @standardRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard Rental'**
+  String get standardRental;
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get tryAgain;
+
+  /// No description provided for @noConfirmedRentalsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No confirmed rentals found'**
+  String get noConfirmedRentalsFound;
+
+  /// No description provided for @confirmedRentalsWillAppearHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Your confirmed car rentals will appear here'**
+  String get confirmedRentalsWillAppearHere;
+
+  /// No description provided for @totalInitialPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Initial Payment'**
+  String get totalInitialPayment;
+
+  /// No description provided for @rentals.
+  ///
+  /// In en, this message translates to:
+  /// **'rentals'**
+  String get rentals;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {
@@ -1653,25 +1889,25 @@ class _SDelegate extends LocalizationsDelegate<S> {
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'fr'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'fr'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_SDelegate old) => false;
 }
 
 S lookupS(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return SEn();
-    case 'fr': return SFr();
+    case 'en':
+      return SEn();
+    case 'fr':
+      return SFr();
   }
 
   throw FlutterError(
-    'S.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'S.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

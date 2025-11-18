@@ -33,9 +33,9 @@
   "duration": "Durée",
   "startDate": "Début",
   "endDate": "Fin",
-  "estimatedFare": "Tarif estimé: {fare} USD",
+  "estimatedFare": "Tarif estimé: {fare} FCFA",
   "confirmBooking": "Confirmer la réservation",
-  "confirmBookingWithFare": "Confirmer la réservation - {fare} USD",
+  "confirmBookingWithFare": "Confirmer la réservation - {fare} FCFA",
   "completeYourBooking": "Compléter votre réservation",
   "provideContactInfo": "Veuillez fournir vos coordonnées pour finaliser la réservation:",
   "yourName": "Votre nom",
@@ -44,7 +44,7 @@
   "phoneHint": "0788123456",
   "privacyInfo": "Vos informations seront utilisées uniquement pour cette réservation.",
   "fillAllFields": "Veuillez remplir tous les champs",
-  "bookingConfirmed": "Réservation confirmée! {category} - {fare} USD",
+  "bookingConfirmed": "Réservation confirmée! {category} - {fare} FCFA",
   "bookingRequestSent": "Demande de réservation envoyée! Vous serez contacté bientôt.",
   "bookingFailed": "Échec de la réservation: {message}",
   "errorBooking": "Erreur lors de la création de la réservation: {error}",
@@ -63,11 +63,11 @@
   "returnDate": "Date de retour",
   "durationType": "Type de durée: {type}",
   "totalDuration": "Durée totale: {duration} {unit}",
-  "ratePerDuration": "Taux: {price} USD par {unit}",
-  "totalPrice": "Total: {price} USD",
+  "ratePerDuration": "Taux: {price} FCFA par {unit}",
+  "totalPrice": "Total: {price} FCFA",
   "priceIncludesDriver": "Le prix comprend le chauffeur",
   "confirmRental": "Confirmer la location",
-  "confirmRentalWithPrice": "Confirmer la location - {price} RWUSDF",
+  "confirmRentalWithPrice": "Confirmer la location - {price} FCFA",
   "completeYourRental": "Compléter votre location",
   "provideRentalContactInfo": "Veuillez fournir vos coordonnées pour finaliser la location:",
   "selectVehicle": "Sélectionner un véhicule",
@@ -258,5 +258,82 @@
   "usedTimes": "Utilisé {count} fois",
   "usingDestination": "Utilisation de \"{name}\" comme destination...",
   "pickup": "Prise en charge",
-  "dropoff": "Dépôt"
+  "dropoff": "Dépôt",
+  "pendingRentals": "Locations en attente",
+  "noRentalsFound": "Aucune location trouvée",
+  "yourPendingRentalsWillAppear": "Vos locations en attente apparaîtront ici",
+  "loadingRentals": "Chargement des locations...",
+  "errorLoadingRentals": "Erreur lors du chargement des locations",
+  "rentalPeriod": "Période de location",
+  "priceEstimated": "Prix estimé",
+  "makePayment": "Effectuer le paiement",
+  "paymentOptions": "Options de paiement",
+  "selectPaymentMethod": "Sélectionner la méthode de paiement",
+  "paymentAmount": "Montant du paiement",
+  "customAmount": "Montant personnalisé",
+  "enterAmount": "Entrer le montant",
+  "processPayment": "Traiter le paiement",
+  "paymentProcessing": "Traitement du paiement",
+  "pleaseWait": "Veuillez patienter...",
+  "paymentSuccessful": "Paiement réussi! Votre réservation a été mise à jour.",
+  "paymentFailed": "Échec du paiement: {message}",
+  "paymentError": "Erreur lors du traitement du paiement: {error}",
+  "pleaseSelectPaymentMethod": "Veuillez sélectionner un mode de paiement et saisir le montant",
+  "fcfaCurrency": "FCFA",
+  "choosePaymentMethod": "Choisir le mode de paiement",
+  "totalAmount": "Montant total: {amount} FCFA",
+  "@totalAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "enterInitialAmount": "Entrez le montant initial à payer: {minAmount} FCFA - {maxAmount} FCFA",
+  "@enterInitialAmount": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "maxAmount": {
+        "type": "String"
+      }
+    }
+  },
+  "amountInFcfa": "Montant en FCFA",
+  "rentalInfo": "Location: {categoryName} - {duration} {unit}",
+  "@rentalInfo": {
+    "placeholders": {
+      "categoryName": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "loadingPaymentMethods": "Chargement des modes de paiement...",
+  "noPaymentMethods": "Aucun mode de paiement disponible",
+  "selectPaymentMethod": "Sélectionner le mode de paiement",
+  "selectedPayment": "Paiement sélectionné",
+  "payWithMethod": "Payer avec {method}",
+  "@payWithMethod": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmPaymentMethod": "Confirmer le mode de paiement",
+  "pleaseEnterValidAmount": "Veuillez entrer un montant de paiement valide",
+  "carRental": "Location de voiture",
+  "standardRental": "Location standard",
+  "tryAgain": "Réessayer",
+  "noConfirmedRentalsFound": "Aucune location confirmée trouvée",
+  "confirmedRentalsWillAppearHere": "Vos locations de voiture confirmées apparaîtront ici",
+  "totalInitialPayment": "Paiement initial total",
+  "rentals": "locations"
 }

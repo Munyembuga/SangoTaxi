@@ -87,7 +87,7 @@ class CategoryWithBookingType {
         final baseFareInt = (double.tryParse(base_fee) ?? 0);
         final perKmRateInt = (double.tryParse(perKmRate) ?? 0);
 
-        return '$baseFareInt USD(${base_km} Km) + $perKmRateInt USD/km';
+        return '$baseFareInt FCFA(${base_km} Km) + $perKmRateInt FCFA/km';
       } else if (pricingMap['type'] == 'rental') {
         // Booking type 2: Car rental without driver
         final details = pricingMap['details'];
@@ -101,13 +101,13 @@ class CategoryWithBookingType {
               final dayPrice = dayPrices.first;
               final priceValue = dayPrice['car_rent_price'].toString();
               final price = (double.tryParse(priceValue) ?? 0);
-              return '$price USD/day';
+              return '$price FCFA/day';
             } else {
               // No day price, show first available price
               final firstPrice = details.first;
               final priceValue = firstPrice['car_rent_price'].toString();
               final price = (double.tryParse(priceValue) ?? 0);
-              return '$price USD/${firstPrice['price_type_name']}';
+              return '$price FCFA/${firstPrice['price_type_name']}';
             }
           } catch (e) {
             print('Error parsing rental pricing: $e');
@@ -127,13 +127,13 @@ class CategoryWithBookingType {
               final dayPrice = dayPrices.first;
               final priceValue = dayPrice['total_price'].toString();
               final price = (double.tryParse(priceValue) ?? 0);
-              return '$price USD/day (with driver)';
+              return '$price FCFA/day (with driver)';
             } else {
               // No day price, show first available price
               final firstPrice = details.first;
               final priceValue = firstPrice['total_price'].toString();
               final price = (double.tryParse(priceValue) ?? 0);
-              return '$price USD/${firstPrice['price_type_name']} (with driver)';
+              return '$price FCFA/${firstPrice['price_type_name']} (with driver)';
             }
           } catch (e) {
             print('Error parsing rental with driver pricing: $e');
@@ -160,7 +160,7 @@ class CategoryWithBookingType {
         final perMinuteRate =
             (double.tryParse(pricingMap['per_minute_rate'] ?? '0') ?? 0);
 
-        return 'Base: $baseFare USD\nPer km: $perKmRate USD\nPer minute: $perMinuteRate USD';
+        return 'Base: $baseFare FCFA\nPer km: $perKmRate FCFA\nPer minute: $perMinuteRate FCFA';
       } else if (pricingMap['type'] == 'rental' ||
           pricingMap['type'] == 'rental_with_driver') {
         final details = pricingMap['details'];
@@ -183,7 +183,7 @@ class CategoryWithBookingType {
 
             if (pricing.isNotEmpty) pricing.write('\n');
             pricing.write(
-                '${priceTypeName.toString().toUpperCase()}: $priceValue USD');
+                '${priceTypeName.toString().toUpperCase()}: $priceValue FCFA');
           }
 
           return pricing.toString();

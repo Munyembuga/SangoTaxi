@@ -211,14 +211,14 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            rental['category_name'] ?? 'Car Rental',
+                            rental['category_name'] ?? s.carRental,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            rental['booking_type_name'] ?? 'Standard Rental',
+                            rental['booking_type_name'] ?? s.standardRental,
                             style: TextStyle(
                               color: Colors.grey.shade600,
                               fontSize: 14,
@@ -342,7 +342,7 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
                             ),
                           ),
                           Text(
-                            '${rental['initial_payment_amount'] ?? '0'} USD',
+                            '${rental['initial_payment_amount'] ?? '0'} FCFA',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
@@ -362,7 +362,7 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
                             ),
                           ),
                           Text(
-                            '${rental['estimated_price'] ?? '0'} USD',
+                            '${rental['estimated_price'] ?? '0'} FCFA',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -409,6 +409,7 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
   }
 
   Widget _buildTotalAmountIndicator() {
+    final s = S.of(context)!; // Get localization
     if (_confirmedRentals.isEmpty) return const SizedBox.shrink();
 
     return Container(
@@ -427,14 +428,14 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Total Initial Payment",
-                  style: TextStyle(
+                Text(
+                  s.totalInitialPayment,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  "${_totalAmount.toStringAsFixed(0)} USD",
+                  "${_totalAmount.toStringAsFixed(0)} FCFA",
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -451,7 +452,7 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              "${_confirmedRentals.length} rentals",
+              "${_confirmedRentals.length} ${s.rentals}",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.green,
@@ -465,6 +466,8 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context)!; // Get localization
+    
     return RefreshIndicator(
       onRefresh: _fetchConfirmedRentals,
       child: _isLoading
@@ -493,7 +496,7 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
                         ),
-                        child: const Text('Try Again'),
+                        child: Text(s.tryAgain),
                       ),
                     ],
                   ),
@@ -510,7 +513,7 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
                           ),
                           const SizedBox(height: 20),
                           Text(
-                            'No confirmed rentals found',
+                            s.noConfirmedRentalsFound,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[600],
@@ -519,7 +522,7 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Your confirmed car rentals will appear here',
+                            s.confirmedRentalsWillAppearHere,
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.grey[500],

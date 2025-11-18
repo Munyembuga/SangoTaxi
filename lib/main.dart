@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sango/screen/homeScreen.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 
 // Create a ChangeNotifier for locale changes
 class LocaleProvider extends ChangeNotifier {
-  Locale _locale = const Locale('en');
+  Locale _locale = const Locale('fr'); // Set French as default
 
   Locale get locale => _locale;
 

@@ -210,6 +210,8 @@ class _PendingRentState extends State<PendingRent> {
   }
 
   void _showPaymentOptionsBottomSheet(Map<String, dynamic> rental) {
+    final s = S.of(context)!; // Get localization
+
     // Show loading indicator if payment modes aren't loaded yet
     if (_paymentModes.isEmpty && !_isLoadingPaymentModes) {
       _fetchPaymentModes();
@@ -264,9 +266,9 @@ class _PendingRentState extends State<PendingRent> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Choose Payment Method',
-                          style: TextStyle(
+                        Text(
+                          s.choosePaymentMethod,
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -291,7 +293,7 @@ class _PendingRentState extends State<PendingRent> {
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              'Total amount: ${_estimatedFare.toStringAsFixed(0)} USD',
+                              'Total amount: ${_estimatedFare.toStringAsFixed(0)} FCFA',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -314,7 +316,7 @@ class _PendingRentState extends State<PendingRent> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Enter initial amount to pay: $_initialPaymentAmount USD  -  ${_estimatedFare.toStringAsFixed(0)} USD',
+                            'Enter initial amount to pay: $_initialPaymentAmount FCFA  -  ${_estimatedFare.toStringAsFixed(0)} FCFA',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
@@ -325,9 +327,9 @@ class _PendingRentState extends State<PendingRent> {
                             controller: _paymentAmountController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              hintText: 'Amount in USD',
+                              hintText: 'Amount in FCFA',
                               prefixIcon: const Icon(Icons.attach_money),
-                              suffixText: 'USD',
+                              suffixText: 'FCFA',
                               filled: true,
                               fillColor: Colors.white,
                               border: OutlineInputBorder(
@@ -589,10 +591,12 @@ class _PendingRentState extends State<PendingRent> {
 
   // Update process payment to not use phone number for guest users
   Future<void> _processPayment([double? customAmount]) async {
+    final s = S.of(context)!; // Get localization
+
     if (_selectedPaymentMode == null || _currentBookingId.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Payment information incomplete'),
+        SnackBar(
+          content: Text(s.pleaseSelectPaymentMethod),
           backgroundColor: Colors.red,
         ),
       );
@@ -607,13 +611,15 @@ class _PendingRentState extends State<PendingRent> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return const AlertDialog(
+        return AlertDialog(
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CircularProgressIndicator(),
-              SizedBox(height: 16),
-              Text('Processing payment...'),
+              const CircularProgressIndicator(),
+              const SizedBox(height: 16),
+              Text(s.paymentProcessing),
+              const SizedBox(height: 8),
+              Text(s.pleaseWait),
             ],
           ),
         );
@@ -637,8 +643,7 @@ class _PendingRentState extends State<PendingRent> {
         // Payment successful
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content:
-                Text(result['message'] ?? 'Booking confirmed successfully!'),
+            content: Text(result['message'] ?? s.paymentSuccessful),
             backgroundColor: Colors.green,
             duration: const Duration(seconds: 3),
           ),
@@ -650,7 +655,7 @@ class _PendingRentState extends State<PendingRent> {
         // Payment failed
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Payment failed: ${result['message']}'),
+            content: Text(s.paymentFailed(result['message'])),
             backgroundColor: Colors.red,
             duration: const Duration(seconds: 4),
           ),
@@ -662,7 +667,7 @@ class _PendingRentState extends State<PendingRent> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error processing payment: $e'),
+          content: Text(s.paymentError(e.toString())),
           backgroundColor: Colors.red,
         ),
       );
@@ -950,7 +955,7 @@ class _PendingRentState extends State<PendingRent> {
                             ),
                           ),
                           Text(
-                            '${rental['initial_payment'] ?? '0'} USD',
+                            '${rental['initial_payment'] ?? '0'} FCFA',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
@@ -970,7 +975,7 @@ class _PendingRentState extends State<PendingRent> {
                             ),
                           ),
                           Text(
-                            '${rental['estimated_price'] ?? '0'} USD',
+                            '${rental['estimated_price'] ?? '0'} FCFA',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -1035,11 +1040,20 @@ class _PendingRentState extends State<PendingRent> {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context)!; // Get localization
+
     return RefreshIndicator(
       onRefresh: _fetchPendingRentals,
       child: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(color: Color(0xFF07723D)),
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(color: Color(0xFF07723D)),
+                  const SizedBox(height: 16),
+                  Text(s.loadingRentals),
+                ],
+              ),
             )
           : _errorMessage.isNotEmpty
               ? Center(
@@ -1063,7 +1077,7 @@ class _PendingRentState extends State<PendingRent> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF07723D),
                         ),
-                        child: const Text('Try Again'),
+                        child: Text(s.retry),
                       ),
                     ],
                   ),
@@ -1080,7 +1094,7 @@ class _PendingRentState extends State<PendingRent> {
                           ),
                           const SizedBox(height: 20),
                           Text(
-                            'No pending rentals found',
+                            s.noRentalsFound,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[600],
@@ -1089,7 +1103,7 @@ class _PendingRentState extends State<PendingRent> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Your pending car rentals will appear here',
+                            s.yourPendingRentalsWillAppear,
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.grey[500],
@@ -1108,7 +1122,7 @@ class _PendingRentState extends State<PendingRent> {
                               ),
                             ),
                             icon: const Icon(Icons.add),
-                            label: const Text('Rent a Car'),
+                            label: Text(s.rentCar),
                           ),
                         ],
                       ),

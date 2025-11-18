@@ -559,7 +559,7 @@ class _ProfileDriverScreenState extends State<ProfileDriverScreen> {
                                         ),
                                       ),
                                       child: Text(
-                                        '${s.wallet}: $wallet USD',
+                                        '${s.wallet}: $wallet FCFA',
                                         style: const TextStyle(
                                           fontSize: 12,
                                           color: Colors.white,
@@ -656,7 +656,7 @@ class _ProfileDriverScreenState extends State<ProfileDriverScreen> {
                       _buildQuickStat(
                           s.thisMonth, thisMonth, Icons.calendar_month),
                       _buildQuickStat(
-                          'Avg USD', avgEarnings, Icons.monetization_on),
+                          'Avg FCFA', avgEarnings, Icons.monetization_on),
                     ],
                   ),
                 ],
