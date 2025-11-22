@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sango/l10n/l10n.dart'; // Add this import
 import 'package:sango/screen/bottomTab.dart';
 import 'package:sango/screen/login.dart';
-import 'package:sango/screen/verify_otp.dart';
 import 'package:sango/services/auth_service.dart';
 
 class RegistrationNewAccount extends StatefulWidget {
@@ -48,7 +47,7 @@ class _RegistrationNewAccountState extends State<RegistrationNewAccount> {
       lastName: _lastNameController.text.trim(),
       email: _emailController.text.trim(),
       password: _passwordController.text,
-      phoneNumber: _phoneController.text.trim(),
+      phoneNumber: '+236${_phoneController.text.trim()}',
     );
 
     setState(() {
@@ -61,17 +60,15 @@ class _RegistrationNewAccountState extends State<RegistrationNewAccount> {
         SnackBar(
           content: Text(result['data']['message'] ??
               S.of(context)!.registrationSuccessful),
-          backgroundColor: Colors.green,
+          backgroundColor: Color(0xFFF5141E),
         ),
       );
 
-      // Navigate to OTP verification
+      // Navigate directly to login screen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => VerifyOtpScreen(
-            email: _emailController.text.trim(),
-          ),
+          builder: (context) => LoginScreen(),
         ),
       );
     } else {
@@ -90,7 +87,7 @@ class _RegistrationNewAccountState extends State<RegistrationNewAccount> {
         automaticallyImplyLeading: false,
         title: Text(s.createNewAccount,
             style: const TextStyle(color: Colors.white)),
-        backgroundColor: const Color(0xFF07723D),
+        backgroundColor: const Color(0xFFF5141E),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -194,14 +191,17 @@ class _RegistrationNewAccountState extends State<RegistrationNewAccount> {
                               const BorderSide(color: Colors.grey, width: 2),
                         ),
                         prefixIcon: const Icon(Icons.phone, size: 20),
+                        prefixText: '+236 ',
+                        hintText: '12345678',
                       ),
                       keyboardType: TextInputType.phone,
+                      maxLength: 8,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return s.enterPhoneNumber;
                         }
-                        if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                          return s.enterValidPhoneNumber;
+                        if (!RegExp(r'^[0-9]{8}$').hasMatch(value)) {
+                          return 'Please enter exactly 8 digits';
                         }
                         return null;
                       },
@@ -211,7 +211,7 @@ class _RegistrationNewAccountState extends State<RegistrationNewAccount> {
                     TextFormField(
                       controller: _emailController,
                       decoration: InputDecoration(
-                        labelText: s.emailAddress,
+                        labelText: '${s.emailAddress} (Optional)',
                         filled: true,
                         fillColor: Colors.grey.shade200,
                         border: OutlineInputBorder(
@@ -227,11 +227,11 @@ class _RegistrationNewAccountState extends State<RegistrationNewAccount> {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return s.enterEmail;
-                        }
-                        if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                          return s.enterValidEmail;
+                        // Email is optional, only validate format if provided
+                        if (value != null && value.isNotEmpty) {
+                          if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                            return s.enterValidEmail;
+                          }
                         }
                         return null;
                       },
@@ -350,7 +350,7 @@ class _RegistrationNewAccountState extends State<RegistrationNewAccount> {
                         : ElevatedButton(
                             onPressed: _registerUser,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF07723D),
+                              backgroundColor: const Color(0xFFF5141E),
                               foregroundColor: Colors.white,
                               minimumSize: const Size(double.infinity, 50),
                               shape: RoundedRectangleBorder(

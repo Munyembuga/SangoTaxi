@@ -41,7 +41,7 @@
   "yourName": "Votre nom",
   "enterYourFullName": "Entrez votre nom complet",
   "phoneNumber": "Numéro de téléphone",
-  "phoneHint": "0788123456",
+  "phoneHint": "+23612345678",
   "privacyInfo": "Vos informations seront utilisées uniquement pour cette réservation.",
   "fillAllFields": "Veuillez remplir tous les champs",
   "bookingConfirmed": "Réservation confirmée! {category} - {fare} FCFA",

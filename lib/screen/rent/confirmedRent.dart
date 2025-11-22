@@ -35,15 +35,15 @@ class _ConfirmedRentState extends State<ConfirmedRent> {
           uri = Uri.parse('mailto:munyembugajd@gmail.com');
           break;
         case 'phone':
-          uri = Uri.parse('tel:+250784857700');
+          uri = Uri.parse('tel:+250 782 282 744');
           break;
         case 'whatsapp':
           // Fix the WhatsApp URL format
-          uri = Uri.parse('whatsapp://send?phone=250784857700');
+          uri = Uri.parse('whatsapp://send?phone=250782282744');
           break;
         case 'messagephone':
           // Fix the WhatsApp URL format
-          uri = Uri.parse('sms:0784857700');
+          uri = Uri.parse('sms:0782282744');
           break;
         default:
           return;

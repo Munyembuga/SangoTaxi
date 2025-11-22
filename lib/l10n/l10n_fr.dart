@@ -144,7 +144,7 @@ class SFr extends S {
   String get phoneNumber => 'Numéro de téléphone';
 
   @override
-  String get phoneHint => '0788123456';
+  String get phoneHint => '+23612345678';
 
   @override
   String get privacyInfo =>

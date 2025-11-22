@@ -257,16 +257,23 @@ class _BookingScreenState extends State<BookingScreen> {
                   } else {
                     // Distance exceeds base km, calculate additional km charges
                     double extraDistance = distanceInKm - baseKm;
-                    _estimatedFare = baseFare + (extraDistance * perKmRate);
+
+                    // Round extra distance to 2 decimal places to avoid floating point precision issues
+                    extraDistance =
+                        double.parse(extraDistance.toStringAsFixed(2));
+
+                    double additionalCharges = extraDistance * perKmRate;
+                    _estimatedFare = baseFare + additionalCharges;
+
                     print(
                         'Distance > Base KM: Using base fare + additional distance charges');
                     print('Extra distance: $extraDistance km');
                     print(
-                        'Additional charges: ${extraDistance * perKmRate} FCFA');
+                        'Additional charges: ${additionalCharges.toStringAsFixed(0)} FCFA');
                     print(
                         'Final fare: ${_estimatedFare.toStringAsFixed(0)} FCFA');
                   }
-                  print('=============================');
+                  print('==============================');
                 }
               } else {
                 _estimatedFare = 1000.0; // Default fare
@@ -382,7 +389,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   Text(
                     suggestion.mainText,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFFF5141E),
                     ),
@@ -424,7 +431,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   Text(
                     suggestion.mainText,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w500,
                       color: Colors.black87,
                     ),
@@ -546,7 +553,7 @@ class _BookingScreenState extends State<BookingScreen> {
               children: [
                 Text(
                   l10n.provideContactInfo,
-                  style: const TextStyle(fontSize: 14),
+                  style: const TextStyle(fontSize: 12),
                 ),
                 const SizedBox(height: 16),
                 TextField(
@@ -727,7 +734,7 @@ class _BookingScreenState extends State<BookingScreen> {
         Text(
           l10n.selectCategory,
           style: const TextStyle(
-            fontSize: 16,
+            fontSize: 12,
             fontWeight: FontWeight.w600,
             color: Colors.black87,
           ),
@@ -812,7 +819,7 @@ class _BookingScreenState extends State<BookingScreen> {
                           Text(
                             item.catgName,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: isSelected
                                   ? const Color(0xFF07723D)
@@ -885,7 +892,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 l10n.selectACategory,
                 style: const TextStyle(
                   color: Colors.grey,
-                  fontSize: 16,
+                  fontSize: 12,
                 ),
               );
             }
@@ -916,7 +923,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         Text(
                           selectedItem.catgName,
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
@@ -1116,7 +1123,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   Text(
                     l10n.pickupLocation,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: Colors.black87,
                     ),
@@ -1204,7 +1211,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   Text(
                     l10n.destination,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: Colors.black87,
                     ),
@@ -1235,7 +1242,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                   Text(
                                     suggestion.mainText,
                                     style: const TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black87,
                                     ),
@@ -1336,7 +1343,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 Text(
                                   l10n.calculatingDistanceAndFare,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Colors.grey.shade700,
                                   ),
                                 ),
@@ -1356,7 +1363,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                         Text(
                                           l10n.distance(_totalDistance),
                                           style: const TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
@@ -1370,7 +1377,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                         Text(
                                           '${l10n.duration}: $_duration',
                                           style: const TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
@@ -1388,7 +1395,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       l10n.estimatedFare(
                                           _estimatedFare.toStringAsFixed(0)),
                                       style: const TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xFFF5141E),
                                       ),
@@ -1486,7 +1493,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                           _estimatedFare.toStringAsFixed(0))
                                       : l10n.confirmBooking,
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                     color: (_destinationController
                                                 .text.isNotEmpty &&

@@ -17,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   String errorMessage = '';
   bool isLoading = false;
@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _phoneController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     final result = await AuthService.login(
-      email: _emailController.text.trim(),
+      phoneNumber: '+236${_phoneController.text.trim()}',
       password: _passwordController.text,
     );
 
@@ -243,11 +243,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 30),
 
-                    // Email input field
+                    // Phone input field
                     TextFormField(
-                      controller: _emailController,
+                      controller: _phoneController,
                       decoration: InputDecoration(
-                        hintText: s.emailAddress,
+                        hintText: s.phoneNumber,
                         hintStyle: const TextStyle(
                             fontWeight: FontWeight.w300, fontSize: 12),
                         filled: true,
@@ -269,19 +269,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         errorStyle: const TextStyle(
                             fontWeight: FontWeight.w300, fontSize: 16),
                         prefixIcon: const Icon(
-                          Icons.email,
+                          Icons.phone,
                           size: 14,
                         ),
+                        prefixText: '+236 ',
                       ),
                       style: const TextStyle(
                           fontWeight: FontWeight.w300, fontSize: 12),
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.phone,
+                      maxLength: 8,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return s.enterEmail;
+                          return s.enterPhoneNumber;
                         }
-                        if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                          return s.enterValidEmail;
+                        if (!RegExp(r'^[0-9]{8}$').hasMatch(value)) {
+                          return 'Please enter exactly 8 digits';
                         }
                         return null;
                       },

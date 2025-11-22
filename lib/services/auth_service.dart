@@ -140,7 +140,7 @@ class AuthService {
   }
 
   static Future<Map<String, dynamic>> login({
-    required String email,
+    required String phoneNumber,
     required String password,
   }) async {
     try {
@@ -152,7 +152,7 @@ class AuthService {
       print(' URL: ${ApiConstants.baseUrl}${ApiConstants.loginEndpoint}');
 
       final requestData = {
-        'email': email,
+        'phone_number': phoneNumber,
         'password': password,
         'device_id': deviceId,
         'device_name': deviceName,
@@ -227,6 +227,8 @@ class AuthService {
       };
     } on DioException catch (e) {
       String errorMessage = 'Login failed';
+      print(errorMessage);
+      print(e);
 
       if (e.response != null) {
         errorMessage = e.response?.data['message'] ?? errorMessage;
