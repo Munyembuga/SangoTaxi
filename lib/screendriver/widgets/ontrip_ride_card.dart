@@ -357,58 +357,64 @@ class _OnTripRideCardState extends State<OnTripRideCard> {
 
                     // Navigation Controls
                     Container(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(12),
                       color: Colors.grey[200],
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      child: Column(
                         children: [
-                          // Toggle navigation mode
-                          ElevatedButton.icon(
-                            icon: Icon(
-                              _isNavigating ? Icons.pause : Icons.navigation,
-                              color: Colors.white,
-                            ),
-                            label: Text(
-                              _isNavigating
-                                  ? 'Pause'
-                                  : 'Démarrer la navigation',
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 12),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: _isNavigating
-                                  ? Colors.orange
-                                  : Color(0xFFF5141E),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 12),
-                            ),
-                            onPressed: () {
-                              if (_routeResult == null) return;
+                          // First row - Toggle navigation mode
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              icon: Icon(
+                                _isNavigating ? Icons.pause : Icons.navigation,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                              label: Text(
+                                _isNavigating
+                                    ? 'Pause'
+                                    : 'Démarrer la navigation',
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 12),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: _isNavigating
+                                    ? Colors.orange
+                                    : Color(0xFFF5141E),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 10),
+                              ),
+                              onPressed: () {
+                                if (_routeResult == null) return;
 
-                              setDialogState(() {
-                                if (_isNavigating) {
-                                  _stopNavigation();
-                                } else {
-                                  _startNavigation(setDialogState);
-                                }
-                              });
-                            },
+                                setDialogState(() {
+                                  if (_isNavigating) {
+                                    _stopNavigation();
+                                  } else {
+                                    _startNavigation(setDialogState);
+                                  }
+                                });
+                              },
+                            ),
                           ),
-
-                          // Launch external navigation app
-                          ElevatedButton.icon(
-                            icon: const Icon(Icons.open_in_new,
-                                color: Colors.white),
-                            label: const Text('Google Maps',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 12)),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 12),
+                          const SizedBox(height: 8),
+                          // Second row - Launch external navigation app
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              icon: const Icon(Icons.open_in_new,
+                                  color: Colors.white, size: 16),
+                              label: const Text('Google Maps',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 12)),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 10),
+                              ),
+                              onPressed: () => _launchExternalNavigation(
+                                  fromLat, fromLng, toLat, toLng),
                             ),
-                            onPressed: () => _launchExternalNavigation(
-                                fromLat, fromLng, toLat, toLng),
                           ),
                         ],
                       ),
