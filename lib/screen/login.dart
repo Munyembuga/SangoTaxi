@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sango/l10n/l10n.dart';
 import 'package:sango/main.dart';
@@ -94,39 +95,145 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Add a new method to handle guest login
   Future<void> _continueAsGuest() async {
+    // Prevent multiple simultaneous calls
+    if (isLoading) return;
+    
+    // Add comprehensive safety checks
+    if (!mounted) return;
+    
     setState(() {
       isLoading = true;
+      errorMessage = ''; // Clear any previous errors
     });
 
     try {
-      // Set up guest user session
-      await StorageService.saveGuestSession();
+      // Pre-flight checks
+      if (!mounted) return;
+      
+      // Ensure context is available and valid
+      final BuildContext currentContext = context;
+      if (!currentContext.mounted) {
+        throw Exception('Context not mounted during guest login');
+      }
+      
+      final navigator = Navigator.of(currentContext);
+      final messenger = ScaffoldMessenger.of(currentContext);
+
+      // Set up guest user session with timeout and retry
+      await StorageService.saveGuestSession().timeout(
+        const Duration(seconds: 15),
+        onTimeout: () {
+          throw TimeoutException('Guest session setup timed out', const Duration(seconds: 15));
+        },
+      );
+
+      // Check if widget is still mounted after async operation
+      if (!mounted) return;
 
       setState(() {
         isLoading = false;
       });
 
-      // Show success message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Continuing as guest user'),
-          backgroundColor: Colors.blue,
-          duration: Duration(seconds: 2),
-        ),
-      );
+      // Show success message with additional safety
+      try {
+        messenger.showSnackBar(
+          const SnackBar(
+            content: Text('Continuing as guest user'),
+            backgroundColor: Colors.blue,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      } catch (snackBarError) {
+        print('SnackBar error (non-critical): $snackBarError');
+      }
 
-      // Navigate to client-only features
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => BottomNavigation(isGuestMode: true),
-        ),
-      );
-    } catch (e) {
+      // Add delay to ensure UI state is stable
+      await Future.delayed(const Duration(milliseconds: 750));
+
+      if (!mounted) return;
+
+      // Navigate with comprehensive error handling
+      try {
+        await navigator.pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => BottomNavigation(isGuestMode: true),
+          ),
+        );
+      } catch (navigationError) {
+        print('Primary navigation failed: $navigationError');
+        
+        // Try alternative navigation approach
+        if (mounted) {
+          try {
+            await navigator.pushNamedAndRemoveUntil('/', (route) => false);
+          } catch (fallbackNavError) {
+            print('Fallback navigation failed: $fallbackNavError');
+            // Reset to safe state
+            if (mounted) {
+              setState(() {
+                isLoading = false;
+                errorMessage = 'Navigation failed. Please restart the app.';
+              });
+            }
+          }
+        }
+      }
+    } catch (e, stackTrace) {
+      // Comprehensive error logging and handling
+      print('=== GUEST LOGIN ERROR ===');
+      print('Error: $e');
+      print('Error type: ${e.runtimeType}');
+      print('Stack trace: $stackTrace');
+      print('Mounted: $mounted');
+      print('========================');
+      
+      if (!mounted) return;
+
       setState(() {
         isLoading = false;
-        errorMessage = 'Failed to continue as guest';
+        errorMessage = _getErrorMessage(e);
       });
+
+      // Show user-friendly error with retry option
+      if (mounted) {
+        try {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(_getErrorMessage(e)),
+              backgroundColor: Colors.red,
+              duration: const Duration(seconds: 5),
+              action: SnackBarAction(
+                label: 'Retry',
+                textColor: Colors.white,
+                onPressed: () => _continueAsGuest(),
+              ),
+            ),
+          );
+        } catch (snackBarError) {
+          print('Could not show error SnackBar: $snackBarError');
+        }
+      }
+    }
+  }
+
+  String _getErrorMessage(dynamic error) {
+    if (error is TimeoutException) {
+      return 'Connection timeout. Please check your internet and try again.';
+    } else if (error.toString().contains('network') || 
+               error.toString().contains('connection') ||
+               error.toString().contains('internet')) {
+      return 'Network error. Please check your connection and try again.';
+    } else if (error.toString().contains('storage') || 
+               error.toString().contains('permission') ||
+               error.toString().contains('write')) {
+      return 'Storage error. Please restart the app and try again.';
+    } else if (error.toString().contains('mounted') ||
+               error.toString().contains('context')) {
+      return 'App state error. Please restart the app and try again.';
+    } else if (error.toString().contains('navigation')) {
+      return 'Navigation error. Please restart the app.';
+    } else {
+      return 'An unexpected error occurred. Please restart the app and try again.';
     }
   }
 

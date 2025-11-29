@@ -21,16 +21,63 @@ class BottomNavigation extends StatefulWidget {
   State<BottomNavigation> createState() => _BottomNavigationScreenState();
 }
 
-class _BottomNavigationScreenState extends State<BottomNavigation> {
+class _BottomNavigationScreenState extends State<BottomNavigation> 
+    with WidgetsBindingObserver {
   late int _selectedIndex;
   late bool _isGuestMode;
+  bool _isInitialized = false;
 
   @override
   void initState() {
     super.initState();
-    _selectedIndex = widget.initialIndex;
-    _isGuestMode = widget.isGuestMode;
-    _checkGuestMode();
+    WidgetsBinding.instance.addObserver(this);
+    
+    try {
+      _selectedIndex = widget.initialIndex.clamp(0, 3); // Ensure valid index
+      _isGuestMode = widget.isGuestMode;
+      
+      // Add error handling for initialization
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          _checkGuestMode();
+        }
+      });
+    } catch (e) {
+      print('BottomNavigation init error: $e');
+      _selectedIndex = 0; // Safe fallback
+      _isGuestMode = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    // Handle app lifecycle changes safely
+    if (state == AppLifecycleState.resumed && mounted) {
+      // App resumed, ensure everything is still valid
+      _validateState();
+    }
+  }
+
+  void _validateState() {
+    try {
+      if (!mounted) return;
+      
+      // Ensure selected index is valid
+      if (_selectedIndex < 0 || _selectedIndex > 3) {
+        setState(() {
+          _selectedIndex = 0;
+        });
+      }
+    } catch (e) {
+      print('State validation error: $e');
+    }
   }
 
   Future<void> _checkGuestMode() async {

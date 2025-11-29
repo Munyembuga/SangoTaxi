@@ -1,5 +1,5 @@
 name: sango
-description: "A new Flutter project."
+description: "Sango Taxi - Your reliable ride-hailing and car rental service."
 
 version: 1.0.0+19
 
@@ -49,12 +49,12 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 flutter_launcher_icons:
   android: true
-  # ios: true
-  image_path: "assets/TwendeSalama.png"  # Replace with the path to your icon
-  adaptive_icon_background: "#ffffff"  # Optional for Android
-  adaptive_icon_foreground: "assets/TwendeSalama.png"  # Optional for Android
-  adaptive_icon_foreground_scale_mode: "cover" # Add this line
-  adaptive_icon_foreground_scale: 1.0 # Add this line
+  ios: true
+  image_path: "assets/sango.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/sango.png"
+  adaptive_icon_foreground_scale_mode: "cover"
+  adaptive_icon_foreground_scale: 1.0
 flutter:
   uses-material-design: true
   generate: true
@@ -63,6 +63,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/sango.png
+    - assets/logo.png
 
 fonts:
     - family: Roboto
