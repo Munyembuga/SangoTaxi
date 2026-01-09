@@ -1,7 +1,9 @@
 name: sango
-description: "Sango Taxi - Your reliable ride-hailing and car rental service."
+description: "Sango Taxi - Ride-hailing app for booking taxi rides, connecting with nearby drivers, real-time tracking, and secure passenger transportation services. No courses or educational content included."
 
-version: 1.0.0+19
+version: 1.0.0+45
+
+
 
 environment:
   sdk: ^3.6.2

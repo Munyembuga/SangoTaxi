@@ -146,6 +146,10 @@ class BookingService {
         // Guest booking - use device info and guest details
         final deviceId = await DeviceInfoService.getDeviceId();
 
+        // Ensure estimated duration is not 0
+        final parsedDuration = int.tryParse(estimatedDuration) ?? 0;
+        final validDuration = parsedDuration > 0 ? parsedDuration : 15; // Default to 15 minutes
+
         requestData = {
           "device_id": deviceId,
           "phone_number": phoneNumber ?? "",
@@ -159,7 +163,7 @@ class BookingService {
           "dropoff_location": dropoffLocation,
           "dropoff_lat": dropoffLat,
           "dropoff_long": dropoffLong,
-          "estimated_duration": int.tryParse(estimatedDuration) ?? 0,
+          "estimated_duration": validDuration,
           "estimated_km": estimated_km,
           "estimated_price": int.tryParse(estimatedPrice) ?? 0,
         };
@@ -207,6 +211,10 @@ class BookingService {
 
         final clientId = clientData['client_id'] ?? '1';
 
+        // Ensure estimated duration is not 0
+        final parsedDuration = int.tryParse(estimatedDuration) ?? 0;
+        final validDuration = parsedDuration > 0 ? parsedDuration : 15; // Default to 15 minutes
+
         requestData = {
           "client_id": clientId,
           "pickup_location": pickupLocation,
@@ -215,7 +223,7 @@ class BookingService {
           "dropoff_location": dropoffLocation,
           "dropoff_lat": dropoffLat,
           "dropoff_long": dropoffLong,
-          "estimated_duration": estimatedDuration,
+          "estimated_duration": validDuration,
           "estimated_km": estimated_km,
           "estimated_price": estimatedPrice,
           "catg_id": categoryId,

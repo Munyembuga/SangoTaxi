@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Sango Taxi</string>
+	<string>sango</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -24,29 +24,12 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>tel</string>
-		<string>mailto</string>
-		<string>comgooglemaps</string>
-		<string>baidumap</string>
-		<string>iosamap</string>
-		<string>waze</string>
-		<string>yandexmaps</string>
-		<string>yandexnavi</string>
-		<string>citymapper</string>
-		<string>mapswithme</string>
-		<string>osmandmaps</string>
-		<string>dgis</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open and in the background to provide navigation services.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location when in the background to provide continuous navigation services.</string>
+	<string>Sango Taxi needs location access to show your current position, find nearby drivers, provide pickup and destination services, and enable navigation features for a complete taxi booking experience.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open to show your current position and provide navigation services.</string>
+	<string>Sango Taxi uses your location to show nearby drivers, provide accurate pickup locations, and enable navigation services while using the app.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -66,5 +49,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>

@@ -228,6 +228,10 @@ class _BookingScreenState extends State<BookingScreen> {
               double distanceInKm = (leg.distance?.value ?? 0) / 1000.0;
               int durationInMinutes = (leg.duration?.value ?? 0) ~/ 60;
               _totalDistance = distanceInKm.toStringAsFixed(2);
+              
+              print('Raw duration value: ${leg.duration?.value}');
+              print('Calculated duration in minutes: $durationInMinutes');
+              
               if (_selectedCategory!.pricing != null) {
                 final pricingType = _selectedCategory!.pricing['type'];
 
@@ -281,10 +285,12 @@ class _BookingScreenState extends State<BookingScreen> {
 
               _isCalculatingDistance = false;
               _estimatedDurationMinutes = durationInMinutes;
+              print('Duration set to: $_estimatedDurationMinutes minutes');
             });
 
             print('=== FARE CALCULATION SUMMARY ===');
             print('Distance: $_distance ( km)');
+            print('Duration: $_estimatedDurationMinutes minutes');
             print('Pricing Type: ${_selectedCategory!.pricing['type']}');
             print('Category: ${_selectedCategory!.catgName}');
             print('Estimated Fare: ${_estimatedFare.toStringAsFixed(0)} FCFA');
@@ -658,6 +664,20 @@ class _BookingScreenState extends State<BookingScreen> {
       // Get category ID
       int categoryId = int.tryParse(_selectedCategory!.catgId) ?? 1;
       print("_totalDistance&&&&&&&&&&&&&&&&: $_totalDistance");
+      print("_estimatedDurationMinutes: $_estimatedDurationMinutes");
+      print("_estimatedFare: $_estimatedFare");
+      
+      // Ensure estimated duration is not zero
+      if (_estimatedDurationMinutes <= 0) {
+        // Calculate a fallback duration based on distance (assuming average speed of 30 km/h)
+        double distanceKm = double.tryParse(_totalDistance) ?? 0.0;
+        _estimatedDurationMinutes = ((distanceKm / 30) * 60).round();
+        if (_estimatedDurationMinutes <= 0) {
+          _estimatedDurationMinutes = 15; // Minimum 15 minutes
+        }
+        print("Using fallback duration: $_estimatedDurationMinutes minutes");
+      }
+      
       // Create booking with guest information if in guest mode
       final result = await BookingService.createBooking(
         pickupLocation: _pickupController.text,

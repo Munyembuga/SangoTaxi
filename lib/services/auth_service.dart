@@ -329,6 +329,78 @@ class AuthService {
     }
   }
 
+  // Delete account method
+  static Future<Map<String, dynamic>> deleteAccount() async {
+    try {
+      // Get the auth token
+      final token = await StorageService.getToken();
+      if (token == null) {
+        return {
+          'success': false,
+          'message': 'Authentication token not found',
+        };
+      }
+
+      print('DELETE ACCOUNT REQUEST:');
+      print(' URL: ${ApiConstants.baseUrl}auth/manage_account.php');
+
+      final requestData = {
+        'action': 'delete',
+      };
+
+      print('Data: $requestData');
+
+      // Set up headers with the bearer token
+      final options = Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      final response = await _dio.post(
+        '${ApiConstants.baseUrl}auth/manage_account.php',
+        data: requestData,
+        options: options,
+      );
+
+      print('DELETE ACCOUNT RESPONSE:');
+      print(' Status Code: ${response.statusCode}');
+      print(' Data: ${response.data}');
+
+      return {
+        'success': true,
+        'data': response.data,
+        'message': response.data['message'] ?? 'Account deleted successfully',
+      };
+    } on DioException catch (e) {
+      String errorMessage = 'Failed to delete account';
+
+      if (e.response != null) {
+        print('DELETE ACCOUNT ERROR:');
+        print('Status code: ${e.response?.statusCode}');
+        print('Error response: ${e.response?.data}');
+        errorMessage = e.response?.data['message'] ?? errorMessage;
+      } else if (e.type == DioExceptionType.connectionTimeout) {
+        errorMessage = 'Connection timeout';
+      } else if (e.type == DioExceptionType.receiveTimeout) {
+        errorMessage = 'Server response timeout';
+      } else {
+        errorMessage = 'Network error';
+      }
+
+      return {
+        'success': false,
+        'message': errorMessage,
+      };
+    } catch (e) {
+      print('UNEXPECTED ERROR: $e');
+      return {
+        'success': false,
+        'message': 'An unexpected error occurred',
+      };
+    }
+  }
+
   // Logout method
   static Future<void> logout() async {
     await StorageService.clearAll();

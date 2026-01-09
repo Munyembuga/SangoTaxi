@@ -208,6 +208,176 @@ class _ProfileDriverScreenState extends State<ProfileDriverScreen> {
     }
   }
 
+  Future<void> _handleDeleteAccount() async {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Handle bar
+              Container(
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Warning icon
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.red.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.delete_forever,
+                  size: 40,
+                  color: Colors.red,
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Title
+              const Text(
+                'Delete Account',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              // Message
+              const Text(
+                'Are you sure you want to permanently delete your account? This action cannot be undone and all your data will be permanently removed.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              // Buttons
+              Row(
+                children: [
+                  // Cancel button
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        side: const BorderSide(color: Colors.grey),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+
+                  // Delete button
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        final navigator = Navigator.of(context);
+                        final scaffoldMessenger = ScaffoldMessenger.of(context);
+                        
+                        navigator.pop(); // Close the dialog first
+
+                        // Show loading indicator
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (context) => const Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.red,
+                            ),
+                          ),
+                        );
+
+                        final result = await AuthService.deleteAccount();
+
+                        // Close loading indicator
+                        navigator.pop();
+
+                        if (result['success']) {
+                          // Show success message
+                          scaffoldMessenger.showSnackBar(
+                            SnackBar(
+                              content: Text(result['message']),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+
+                          // Logout and navigate to login
+                          await AuthService.logout();
+                          navigator.pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()),
+                            (Route<dynamic> route) => false,
+                          );
+                        } else {
+                          // Show error message
+                          scaffoldMessenger.showSnackBar(
+                            SnackBar(
+                              content: Text(result['message']),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        'Delete Permanently',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> _handleLogout() async {
     final s = S.of(context)!;
     showModalBottomSheet(
@@ -491,12 +661,8 @@ class _ProfileDriverScreenState extends State<ProfileDriverScreen> {
                             color: Colors.white,
                           ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.edit, color: Colors.white),
-                          onPressed: () {
-                            // Edit profile functionality
-                          },
-                        ),
+                        // Edit profile functionality will be implemented in next version
+                        const SizedBox(width: 48), // Maintain layout spacing
                       ],
                     ),
                     const SizedBox(height: 8),
@@ -814,6 +980,7 @@ class _ProfileDriverScreenState extends State<ProfileDriverScreen> {
                   _buildProfileOption(
                       Icons.language, s.language, _showLanguageDialog),
                   // _buildProfileOption(Icons.help_outline, s.helpSupport, () {}),
+                  _buildProfileOption(Icons.person_off, 'Delete Account', _handleDeleteAccount),
                   _buildProfileOption(Icons.logout, s.logout, _handleLogout,
                       isLast: true, isLogout: true),
                 ],
